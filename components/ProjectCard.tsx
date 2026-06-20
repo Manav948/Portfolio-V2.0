@@ -4,6 +4,46 @@ import React, { useRef, useState } from "react";
 import { Globe } from "lucide-react";
 import { getTechIcon } from "@/components/ui/TechIcons";
 
+
+const TechBubble = ({ name }: { name: string }) => {
+  const [hovered, setHovered] = useState(false);
+  return (
+    <div
+      className="relative flex items-center justify-center"
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{ zIndex: hovered ? 30 : 10 }}
+    >
+      <div
+        className="w-7 h-7 rounded-full flex items-center justify-center bg-neutral-50 dark:bg-neutral-800/90 border border-neutral-200/80 dark:border-neutral-700/60 shadow-xs cursor-pointer"
+        style={{
+          transform: hovered ? "translateY(-5px) scale(1.15)" : "translateY(0) scale(1)",
+          borderColor: hovered ? "#f97316" : "",
+          boxShadow: hovered ? "0 4px 12px rgba(249, 115, 22, 0.25)" : "",
+          transition: "transform 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms ease, box-shadow 200ms ease",
+        }}
+      >
+        <div className="w-[15px] h-[15px] flex items-center justify-center">
+          {getTechIcon(name, "w-full h-full")}
+        </div>
+      </div>
+     
+      <div
+        className="absolute bottom-full mb-2.5 left-1/2 px-2 py-0.5 rounded-md bg-neutral-900 dark:bg-neutral-100 text-white dark:text-neutral-900 text-[10px] font-semibold whitespace-nowrap pointer-events-none shadow-md"
+        style={{
+          opacity: hovered ? 1 : 0,
+          transform: hovered ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(4px)",
+          transition: "opacity 150ms ease, transform 150ms ease",
+        }}
+      >
+        {name}
+       
+        <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-neutral-900 dark:border-t-neutral-100 w-0 h-0" />
+      </div>
+    </div>
+  );
+};
+
 export interface ProjectCardProps {
   img: string;
   title: string;
@@ -71,9 +111,9 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
       />
 
     
-      <div className="relative z-10 m-[1.5px] rounded-[16.5px] bg-white dark:bg-neutral-900 overflow-hidden flex flex-col">
+      <div className="relative z-10 m-[1.5px] rounded-[16.5px] bg-white dark:bg-neutral-900 flex flex-col" style={{overflow: "clip"}}>
         
-        <div className="relative w-full h-44 overflow-hidden bg-neutral-950">
+        <div className="relative w-full h-38 overflow-hidden bg-neutral-950">
           <img
             src={img}
             alt={`${title} screenshot`}
@@ -88,7 +128,7 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
         <div className="h-px bg-neutral-100 dark:bg-neutral-800/60" />
 
        
-        <div className="p-5 flex flex-col gap-3 flex-1">
+        <div className="p-4 flex flex-col gap-2.5 flex-1">
       
           <div className="flex items-start justify-between gap-3">
             <h3 className="text-[15px] font-bold text-neutral-900 dark:text-neutral-50 tracking-tight leading-snug">
@@ -119,12 +159,12 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
           </div>
 
           
-          <p className="text-[12.5px] leading-[1.65] text-neutral-500 dark:text-neutral-450 font-normal line-clamp-2 min-h-[41px]">
+          <p className="text-[12.5px] leading-[1.6] text-neutral-500 dark:text-neutral-450 font-normal line-clamp-2 min-h-[40px]">
             {description}
           </p>
 
          
-          <div className="flex items-center justify-between gap-2 mt-auto pt-2 border-t border-neutral-100 dark:border-neutral-800/50">
+          <div className="flex items-center justify-between gap-2 mt-auto pt-2.5 pb-1 border-t border-neutral-100 dark:border-neutral-800/50 overflow-visible">
            
             <div className="flex items-center gap-1.5 shrink-0">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
@@ -133,27 +173,11 @@ export const ProjectCard: React.FC<ProjectCardProps> = ({
               </span>
             </div>
 
-          
-            <div className="flex items-center gap-1 flex-wrap justify-end">
-              {tech.slice(0, 3).map((t) => (
-                <span
-                  key={t}
-                  className="inline-flex items-center gap-1 text-[9.5px] font-semibold bg-neutral-100 dark:bg-neutral-800 text-neutral-500 dark:text-neutral-400 px-[6px] py-[3px] rounded-md border border-neutral-200/70 dark:border-neutral-700/40 whitespace-nowrap"
-                >
-                  <span className="w-[11px] h-[11px] shrink-0 flex items-center justify-center">
-                    {getTechIcon(t, "w-full h-full")}
-                  </span>
-                  {t}
-                </span>
+
+            <div className="flex items-center -space-x-1.5 justify-end pb-1 select-none">
+              {tech.map((t) => (
+                <TechBubble key={t} name={t} />
               ))}
-              {tech.length > 3 && (
-                <span
-                  className="text-[9.5px] font-semibold text-neutral-400 dark:text-neutral-500 whitespace-nowrap"
-                  title={tech.slice(3).join(", ")}
-                >
-                  +{tech.length - 3}
-                </span>
-              )}
             </div>
           </div>
         </div>

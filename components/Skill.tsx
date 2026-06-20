@@ -5,7 +5,7 @@ import { getTechIcon } from "@/components/ui/TechIcons";
 
 
 const SKILLS = [
- 
+
   { name: "Next.js", category: "Frontend" },
   { name: "React", category: "Frontend" },
   { name: "TypeScript", category: "Frontend" },
@@ -18,18 +18,18 @@ const SKILLS = [
   { name: "HTML", category: "Frontend" },
   { name: "CSS", category: "Frontend" },
 
-  
+
   { name: "Node.js", category: "Backend" },
   { name: "Express", category: "Backend" },
 
-  
+
   { name: "MongoDB", category: "Database" },
   { name: "PostgreSQL", category: "Database" },
   { name: "Redis", category: "Database" },
   { name: "Supabase", category: "Database" },
   { name: "Prisma", category: "Database" },
 
- 
+
   { name: "Git", category: "Tools" },
   { name: "Docker", category: "Tools" },
   { name: "AWS", category: "Tools" },
@@ -52,7 +52,7 @@ const SkillBadge = ({ name }: { name: string }) => (
 const Skill = () => {
   return (
     <section className="w-full flex flex-col gap-5">
-     
+
       <div className="flex flex-col gap-1">
         <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
           Tech Stack

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
 import Skill from "@/components/Skill";
+import Contact from "@/components/Contact";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <main className="w-full max-w-3xl mx-auto px-6 sm:px-16 pb-24 z-10 flex flex-col gap-16">
         <Projects />
         <Skill />
+        <Contact />
       </main>
     </div>
   );

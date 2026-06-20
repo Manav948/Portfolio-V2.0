@@ -1,6 +1,9 @@
 import axios from "axios";
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
+
 export async function GET() {
     try {
         const res = await axios.get("https://github-contributions-api.jogruber.de/v4/Manav948");

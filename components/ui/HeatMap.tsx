@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { Info } from "lucide-react";
 import axios from "axios";
 
@@ -20,6 +20,7 @@ export const HeatMap: React.FC = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const [hoveredDay, setHoveredDay] = useState<ContributionDay | null>(null);
+    const scrollContainerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,13 +39,19 @@ export const HeatMap: React.FC = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        if (data && scrollContainerRef.current) {
+            scrollContainerRef.current.scrollLeft = scrollContainerRef.current.scrollWidth;
+        }
+    }, [data]);
+
     if (loading) {
         return <HeatMapSkeleton />;
     }
 
     if (error || !data) {
         return (
-            <div className="w-full py-8 text-center border border-dashed border-neutral-200 dark:border-neutral-800 rounded-2xl">
+            <div className="w-full py-8 text-center border border-dashed border-neutral-200 dark:border-neutral-800 rounded-2xl bg-white/50 dark:bg-neutral-900/30 p-5 mt-2">
                 <Info className="mx-auto h-8 w-8 text-neutral-400 dark:text-neutral-500 mb-2" />
                 <h3 className="text-sm font-semibold text-neutral-900 dark:text-neutral-50">Could not load GitHub contributions</h3>
                 <p className="text-xs text-neutral-500 dark:text-neutral-400 mt-1">Please try reloading or check again later.</p>
@@ -67,7 +74,7 @@ export const HeatMap: React.FC = () => {
     const satDate = String(saturday.getDate()).padStart(2, "0");
     const saturdayStr = `${satYear}-${satMonth}-${satDate}`;
 
-    // Find the index of this Saturday in the  data
+    // Find the index of this Saturday in the data
     let satIndex = chronological.findIndex((c) => c.date === saturdayStr);
     if (satIndex === -1) {
         // Fallback to the latest available date in the dataset if Saturday is not found
@@ -89,7 +96,6 @@ export const HeatMap: React.FC = () => {
 
     // Sum actual counts in displayDays to get the total contributions for the display
     const totalContributions = displayDays.reduce((sum, d) => sum + d.count, 0);
-
 
     const monthLabelsMap = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
@@ -114,7 +120,6 @@ export const HeatMap: React.FC = () => {
         return null;
     };
 
-
     const getColorClass = (level: number) => {
         switch (level) {
             case 0:
@@ -138,36 +143,46 @@ export const HeatMap: React.FC = () => {
     };
 
     return (
-        <div className="w-full flex flex-col gap-4 select-none transition-all duration-300 mt-2 heatmap-container">
+        <div className="w-full flex flex-col gap-4 p-4.5 sm:p-5 rounded-2xl bg-white/50 dark:bg-neutral-900/30 border border-neutral-200/80 dark:border-neutral-800/60 shadow-xs backdrop-blur-xs select-none transition-all duration-300 mt-2 heatmap-container">
             <style>{`
                 .heatmap-container {
                     --square-size: 10px;
                     --square-gap: 3px;
                 }
-                @media (max-width: 768px) {
-                    .heatmap-container {
-                        --square-size: 8px;
-                        --square-gap: 2px;
-                    }
+                .scrollbar-none::-webkit-scrollbar {
+                    display: none;
                 }
-                @media (max-width: 600px) {
-                    .heatmap-container {
-                        --square-size: 6px;
-                        --square-gap: 1.5px;
-                    }
-                }
-                @media (max-width: 450px) {
-                    .heatmap-container {
-                        --square-size: 5px;
-                        --square-gap: 1px;
-                    }
+                .scrollbar-none {
+                    -ms-overflow-style: none;
+                    scrollbar-width: none;
                 }
             `}</style>
 
+         
+            <div className="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-850/60">
+                <div className="flex items-center gap-2">
+                    <svg fill="currentColor" viewBox="0 0 24 24" className="w-4 h-4 text-neutral-600 dark:text-neutral-400">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                    </svg>
+                    <span className="text-[13px] font-bold text-neutral-800 dark:text-neutral-200">GitHub Contributions</span>
+                </div>
+                <a
+                    href="https://github.com/Manav948"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[11px] font-semibold text-neutral-400 hover:text-[#e18845] dark:hover:text-[#fb923c] transition-colors duration-200"
+                >
+                    @Manav948 ↗
+                </a>
+            </div>
 
-            <div className="w-full overflow-hidden flex justify-center pb-2">
-                <div className="flex flex-col gap-1.5">
-
+            
+            <div
+                ref={scrollContainerRef}
+                className="w-full overflow-x-auto scrollbar-none pb-1 pt-1 scroll-smooth cursor-grab active:cursor-grabbing"
+            >
+                <div className="flex flex-col gap-1.5 w-max mx-auto">
+                   
                     <div style={{ gap: "var(--square-gap)" }} className="flex text-[10px] text-neutral-400 dark:text-neutral-500 font-semibold h-4">
                         <div className="w-5 pr-1.5" />
                         {weeks.map((week, weekIndex) => {
@@ -184,9 +199,8 @@ export const HeatMap: React.FC = () => {
                         })}
                     </div>
 
-
                     <div style={{ gap: "var(--square-gap)" }} className="flex">
-
+                       
                         <div style={{ gap: "var(--square-gap)" }} className="flex flex-col text-[9px] font-bold text-neutral-400 dark:text-neutral-500 w-5 pr-1.5 select-none text-right">
                             <div style={{ height: "var(--square-size)" }} className="flex items-center justify-end"></div>
                             <div style={{ height: "var(--square-size)" }} className="flex items-center justify-end">Mon</div>
@@ -197,7 +211,7 @@ export const HeatMap: React.FC = () => {
                             <div style={{ height: "var(--square-size)" }} className="flex items-center justify-end"></div>
                         </div>
 
-
+                       
                         <div style={{ gap: "var(--square-gap)" }} className="flex">
                             {weeks.map((week, weekIndex) => (
                                 <div key={weekIndex} style={{ gap: "var(--square-gap)" }} className="flex flex-col">
@@ -214,11 +228,10 @@ export const HeatMap: React.FC = () => {
                             ))}
                         </div>
                     </div>
-
                 </div>
             </div>
 
-
+          
             <div className="flex flex-wrap items-center justify-between text-xs border-t border-neutral-100 dark:border-neutral-850/60 pt-3 gap-3">
                 <div className="text-neutral-500 dark:text-neutral-400 font-semibold min-h-[16px]">
                     {hoveredDay ? (
@@ -232,7 +245,6 @@ export const HeatMap: React.FC = () => {
                     )}
                 </div>
 
-
                 <div className="flex items-center gap-1 text-[10px] text-neutral-400 dark:text-neutral-500 font-bold">
                     <span>Less</span>
                     <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-[2px] bg-[#f4f4f5] dark:bg-[#161b22] border border-neutral-250/20 dark:border-neutral-800/40" />
@@ -243,35 +255,45 @@ export const HeatMap: React.FC = () => {
                     <span>More</span>
                 </div>
             </div>
-
         </div>
     );
 };
 
-// loader
+
 const HeatMapSkeleton: React.FC = () => {
     return (
-        <div className="w-full flex flex-col gap-4 animate-pulse mt-4">
-            <div className="flex flex-col gap-1.5 w-full">
-                <div className="h-4 w-52 bg-neutral-200 dark:bg-neutral-800 rounded mb-1" />
-                <div className="flex gap-[3px] h-[88px] w-full overflow-hidden">
-                    <div className="w-5" />
+        <div className="w-full flex flex-col gap-4 p-4.5 sm:p-5 rounded-2xl bg-white/50 dark:bg-neutral-900/30 border border-neutral-200/80 dark:border-neutral-800/60 shadow-xs backdrop-blur-xs select-none transition-all duration-300 mt-2 animate-pulse">
+            <div className="flex items-center justify-between pb-2 border-b border-neutral-100 dark:border-neutral-800/50">
+                <div className="h-4 w-32 bg-neutral-200 dark:bg-neutral-800 rounded" />
+                <div className="h-3 w-16 bg-neutral-200 dark:bg-neutral-800 rounded" />
+            </div>
+
+            <div className="w-full overflow-hidden pb-1 pt-1">
+                <div className="flex flex-col gap-1.5 w-max mx-auto">
+                    <div className="flex gap-[3px] h-4">
+                        <div className="w-5" />
+                        <div className="h-3 w-28 bg-neutral-200 dark:bg-neutral-800 rounded" />
+                    </div>
                     <div className="flex gap-[3px]">
-                        {Array.from({ length: 45 }).map((_, colIdx) => (
-                            <div key={colIdx} className="flex flex-col gap-[3px]">
-                                {Array.from({ length: 7 }).map((_, rowIdx) => (
-                                    <div
-                                        key={rowIdx}
-                                        className="w-[10px] h-[10px] rounded-[2px] bg-neutral-200 dark:bg-neutral-800/50"
-                                    />
-                                ))}
-                            </div>
-                        ))}
+                        <div className="w-5" />
+                        <div className="flex gap-[3px]">
+                            {Array.from({ length: 45 }).map((_, colIdx) => (
+                                <div key={colIdx} className="flex flex-col gap-[3px]">
+                                    {Array.from({ length: 7 }).map((_, rowIdx) => (
+                                        <div
+                                            key={rowIdx}
+                                            className="w-[10px] h-[10px] rounded-[2px] bg-neutral-200 dark:bg-neutral-800/50"
+                                        />
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>
-            <div className="flex items-center justify-between border-t border-neutral-100 dark:border-neutral-850/60 pt-3">
-                <div className="h-4 w-48 bg-neutral-200 dark:bg-neutral-850 rounded" />
+
+            <div className="flex items-center justify-between border-t border-neutral-100 dark:border-neutral-800/50 pt-3">
+                <div className="h-4 w-40 bg-neutral-200 dark:bg-neutral-850 rounded" />
                 <div className="h-4 w-24 bg-neutral-200 dark:bg-neutral-850 rounded" />
             </div>
         </div>
