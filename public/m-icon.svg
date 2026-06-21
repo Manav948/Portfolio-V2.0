@@ -1,10 +1,4 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <defs>
-    <linearGradient id="orange-grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#f97316" />
-      <stop offset="100%" stop-color="#dd6b20" />
-    </linearGradient>
-  </defs>
-  <rect width="512" height="512" rx="128" fill="url(#orange-grad)" />
-  <path d="M130 380 V132 H194 L256 250 L318 132 H382 V380 H326 V234 L256 360 L186 234 V380 Z" fill="#ffffff" />
+  <circle cx="256" cy="256" r="256" fill="#000000" />
+  <path d="M100 406 V216 C100 176 120 156 165 156 C210 156 231 176 231 216 V406 H281 V216 C281 176 302 156 347 156 C392 156 412 176 412 216 V406 H462 V216 C462 146 412 106 347 106 C307 106 278 128 256 158 C234 128 205 106 165 106 C100 106 50 146 50 216 V406 H100 Z" fill="#ffffff" />
 </svg>
