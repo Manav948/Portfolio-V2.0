@@ -1,6 +1,13 @@
 import React from "react";
 import Header from "@/components/Header";
 import AllProject from "./projects";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description: "Explore the latest web applications and software projects built by Manav Valani.",
+};
+
 
 export default function ProjectsPage() {
   return (
