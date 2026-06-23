@@ -46,8 +46,14 @@ export const GrowingBranches: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Disable canvas animation on mobile devices (width < 768px) to prevent scroll lag and CPU overhead
+    if (window.innerWidth < 768) {
+      return;
+    }
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
+
 
     const getColors = () => {
       const isDark = document.documentElement.classList.contains("dark");
@@ -411,7 +417,7 @@ export const GrowingBranches: React.FC = () => {
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 w-full h-full pointer-events-none select-none z-0"
+      className="hidden md:block fixed inset-0 w-full h-full pointer-events-none select-none z-0"
     />
   );
 };
