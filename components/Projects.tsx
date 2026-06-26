@@ -34,12 +34,12 @@ const PROJECTS_DATA = [
     status: "Running"
   },
   {
-    img: "/FeedBackly3.png",
+    img: "/FeedBacklyv.20.png",
     title: "FeedBackly",
     description:
       "Application that allows users to receive anonymous feedback using shareable links.",
     tech: ["Next.js", "Tailwind", "MongoDB"],
-    link: "https://feedbackly-seven.vercel.app/",
+    link: "https://feedbackly.manavvalani.in/",
     github: "https://github.com/Manav948/feedbackly",
     status: "Running"
   },
