@@ -79,7 +79,7 @@ const ALL_PROJECTS = [
     status: "Running",
   },
   {
-    img: "/Assitant.png",
+    img: "/assitant3.png",
     title: "AI-Assistant",
     description:
       "A full-stack AI-powered voice assistant built with React, Node.js, Express, and MongoDB. Features real-time speech recognition, wake word detection, and natural language responses using the Google Gemini API.",
