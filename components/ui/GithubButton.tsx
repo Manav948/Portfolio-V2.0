@@ -14,14 +14,14 @@ export const GithubButton: React.FC<GithubButtonProps> = ({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex w-[35px] h-[35px] items-center justify-center bg-transparent rounded-[7px] transition-all duration-300 focus:outline-none ${className}`}
+      className={`group relative flex w-8.75 h-8.75 items-center justify-center bg-transparent rounded-[7px] transition-all duration-300 focus:outline-none ${className}`}
       aria-label="Visit GitHub Profile"
     >
       
-      <span className="absolute inset-0 origin-bottom rounded-[10px] bg-[#181818] transition-transform duration-300 ease-out z-0 group-hover:rotate-[35deg] pointer-events-none" />
+      <span className="absolute inset-0 origin-bottom rounded-[10px] bg-[#181818] transition-transform duration-300 ease-out z-0 group-hover:rotate-35 pointer-events-none" />
 
      
-      <span className="relative z-10 w-full h-full flex items-center justify-center bg-transparent border border-[rgba(156,156,156,0.466)] rounded-[10px] transition-all duration-300 group-hover:bg-[rgba(156,156,156,0.466)] group-hover:backdrop-blur-[4px]">
+      <span className="relative z-10 w-full h-full flex items-center justify-center bg-transparent border border-[rgba(156,156,156,0.466)] rounded-[10px] transition-all duration-300 group-hover:bg-[rgba(156,156,156,0.466)] group-hover:backdrop-blur-xs">
         <svg
           fill="white"
           viewBox="0 0 496 512"

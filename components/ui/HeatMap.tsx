@@ -221,7 +221,7 @@ export const HeatMap: React.FC = () => {
                                             onMouseEnter={() => setHoveredDay(day)}
                                             onMouseLeave={() => setHoveredDay(null)}
                                             style={{ width: "var(--square-size)", height: "var(--square-size)" }}
-                                            className={`rounded-[2px] ${getColorClass(day.level)} transition-all duration-150 hover:scale-125 hover:z-10 cursor-pointer`}
+                                            className={`rounded-xs ${getColorClass(day.level)} transition-all duration-150 hover:scale-125 hover:z-10 cursor-pointer`}
                                         />
                                     ))}
                                 </div>
@@ -233,7 +233,7 @@ export const HeatMap: React.FC = () => {
 
           
             <div className="flex flex-wrap items-center justify-between text-xs border-t border-neutral-100 dark:border-neutral-850/60 pt-3 gap-3">
-                <div className="text-neutral-500 dark:text-neutral-400 font-semibold min-h-[16px]">
+                <div className="text-neutral-500 dark:text-neutral-400 font-semibold min-h-4">
                     {hoveredDay ? (
                         <span className="text-neutral-700 dark:text-neutral-300">
                             {hoveredDay.count} contribution{hoveredDay.count === 1 ? "" : "s"} on {formatDate(hoveredDay.date)}
@@ -247,11 +247,11 @@ export const HeatMap: React.FC = () => {
 
                 <div className="flex items-center gap-1 text-[10px] text-neutral-400 dark:text-neutral-500 font-bold">
                     <span>Less</span>
-                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-[2px] bg-[#f4f4f5] dark:bg-[#161b22] border border-neutral-250/20 dark:border-neutral-800/40" />
-                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-[2px] bg-[#ffedd5] dark:bg-[#431407]/50" />
-                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-[2px] bg-[#fed7aa] dark:bg-[#7c2d12]/70" />
-                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-[2px] bg-[#fb923c] dark:bg-[#c2410c]/90" />
-                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-[2px] bg-[#e18845] dark:bg-[#fec195]" />
+                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-xs bg-[#f4f4f5] dark:bg-[#161b22] border border-neutral-250/20 dark:border-neutral-800/40" />
+                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-xs bg-[#ffedd5] dark:bg-[#431407]/50" />
+                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-xs bg-[#fed7aa] dark:bg-[#7c2d12]/70" />
+                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-xs bg-[#fb923c] dark:bg-[#c2410c]/90" />
+                    <div style={{ width: "var(--square-size)", height: "var(--square-size)" }} className="rounded-xs bg-[#e18845] dark:bg-[#fec195]" />
                     <span>More</span>
                 </div>
             </div>
@@ -270,19 +270,19 @@ const HeatMapSkeleton: React.FC = () => {
 
             <div className="w-full overflow-hidden pb-1 pt-1">
                 <div className="flex flex-col gap-1.5 w-max mx-auto">
-                    <div className="flex gap-[3px] h-4">
+                    <div className="flex gap-0.75 h-4">
                         <div className="w-5" />
                         <div className="h-3 w-28 bg-neutral-200 dark:bg-neutral-800 rounded" />
                     </div>
-                    <div className="flex gap-[3px]">
+                    <div className="flex gap-0.75">
                         <div className="w-5" />
-                        <div className="flex gap-[3px]">
+                        <div className="flex gap-0.75">
                             {Array.from({ length: 45 }).map((_, colIdx) => (
-                                <div key={colIdx} className="flex flex-col gap-[3px]">
+                                <div key={colIdx} className="flex flex-col gap-0.75">
                                     {Array.from({ length: 7 }).map((_, rowIdx) => (
                                         <div
                                             key={rowIdx}
-                                            className="w-[10px] h-[10px] rounded-[2px] bg-neutral-200 dark:bg-neutral-800/50"
+                                            className="w-2.5 h-2.5 rounded-xs bg-neutral-200 dark:bg-neutral-800/50"
                                         />
                                     ))}
                                 </div>

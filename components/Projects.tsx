@@ -3,6 +3,7 @@
 import React from "react";
 import ProjectCard from "./ProjectCard";
 import Link from "next/link";
+import Button from "./ui/Button";
 
 const PROJECTS_DATA = [
   {
@@ -84,13 +85,10 @@ export const Projects: React.FC = () => {
 
 
       <div className="flex justify-center mt-4">
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 px-5 py-2.5 border border-neutral-300 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900 rounded-xl text-[14px] font-sans font-semibold text-neutral-700 dark:text-neutral-300 transition-all duration-300 focus:outline-none"
-        >
-          <span>View All</span>
+        <Button href="/projects">
+          View All
           <span className="text-[10px]">↗</span>
-        </Link>
+        </Button>
       </div>
 
     </div>
