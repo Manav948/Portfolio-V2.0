@@ -9,9 +9,9 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
 export const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, ButtonProps>(
     ({ children = "See more", className, href, ...props }, ref) => {
         const baseClass = cn(
-            "group relative bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white h-16 w-64 border border-neutral-300 dark:border-neutral-850 hover:border-rose-500 dark:hover:border-rose-300 " +
-            "text-left p-3 text-base font-bold rounded-lg overflow-hidden cursor-pointer " +
-            "transition-all duration-500 ease-in-out hover:text-rose-600 dark:hover:text-rose-300 hover:underline hover:underline-offset-4 " +
+            "group relative bg-white dark:bg-neutral-900 text-neutral-900 dark:text-white h-12 w-44 border border-neutral-300 dark:border-neutral-850 hover:border-rose-500 dark:hover:border-rose-300 " +
+            "text-left p-3 text-sm font-bold rounded-lg overflow-hidden cursor-pointer " +
+            "transition-all duration-500 ease-in-out hover:text-rose-600 dark:hover:text-rose-300 hover:underline hover:underline-offset-4 active:scale-[0.98] " +
             "before:absolute before:w-10 before:h-10 before:content-[''] before:right-1 before:top-1 before:z-10 before:bg-violet-500 before:rounded-full before:blur-lg before:transition-all before:duration-500 " +
             "hover:before:right-12 hover:before:-bottom-8 hover:before:blur hover:before:[box-shadow:20px_20px_20px_30px_#a21caf] " +
             "after:absolute after:z-10 after:w-20 after:h-20 after:content-[''] after:bg-rose-300 after:right-8 after:top-3 after:rounded-full after:blur-lg after:transition-all after:duration-500 " +
@@ -53,4 +53,3 @@ export const Button = React.forwardRef<HTMLButtonElement & HTMLAnchorElement, Bu
 Button.displayName = "Button";
 
 export default Button;
-

@@ -87,7 +87,9 @@ export const Projects: React.FC = () => {
       <div className="flex justify-center mt-4">
         <Button href="/projects">
           View All
-          <span className="text-[10px]">↗</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 opacity-60">
+            <path d="M7 17L17 7M17 7H7M17 7v10" />
+          </svg>
         </Button>
       </div>
 

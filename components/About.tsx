@@ -1,7 +1,7 @@
 import React from "react";
 import BookCall from "@/components/ui/BookCall";
 import HeatMap from "./ui/HeatMap";
-import Link from "next/link";
+import Button from "./ui/Button";
 
 const About = () => {
   return (
@@ -58,15 +58,14 @@ const About = () => {
 
           <div className="flex items-center gap-3 flex-wrap">
             <BookCall href="https://calendly.com/manav-valani" />
-            <Link
+            <Button
               href="/projects"
-              className="inline-flex items-center gap-2 px-5 py-[13px] border border-neutral-300 dark:border-neutral-800 hover:border-neutral-400 dark:hover:border-neutral-700 hover:bg-neutral-50 dark:hover:bg-neutral-900 rounded-xl text-[14px] font-semibold text-neutral-700 dark:text-neutral-300 transition-all duration-200"
             >
               View Projects
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-3.5 h-3.5 opacity-60">
                 <path d="M7 17L17 7M17 7H7M17 7v10" />
               </svg>
-            </Link>
+            </Button>
           </div>
         </div>
 
