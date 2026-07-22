@@ -60,7 +60,7 @@ const SOCIALS = [
     id: "calendly",
     label: "Book a Call",
     value: "calendly.com/manav-valani",
-    href: "https://calendly.com/manav-valani",
+    href: "https://calendly.com/valanimanav61/meet",
     display: "calendly",
     color: "#006BFF",
     icon: (

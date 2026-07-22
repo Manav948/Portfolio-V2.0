@@ -13,7 +13,7 @@ const About = () => {
 
           <div className="flex items-center gap-4">
             <div className="relative shrink-0">
-              <div className="w-[30px] h-[30px] sm:w-[68px] sm:h-[68px] rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-sm">
+              <div className="w-7.5 h-7.5 sm:w-17 sm:h-17 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-sm">
                 <img
                   src="/me.png"
                   alt="Manav Valani"
@@ -21,7 +21,7 @@ const About = () => {
                 />
               </div>
 
-              <span className="absolute bottom-[-2px] right-[-2px] w-[14px] h-[14px] bg-emerald-500 border-[3px] border-white dark:border-neutral-950 rounded-full z-20" />
+              <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-[3px] border-white dark:border-neutral-950 rounded-full z-20" />
             </div>
 
             <div className="flex flex-col gap-0.5">

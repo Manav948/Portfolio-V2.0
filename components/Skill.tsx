@@ -39,7 +39,7 @@ const SKILLS = [
 
 const SkillBadge = ({ name }: { name: string }) => (
   <div className="group/badge inline-flex items-center gap-2 px-3.5 py-2 rounded-xl border border-neutral-200/80 dark:border-neutral-700/50 bg-white dark:bg-neutral-800/60 hover:border-neutral-300 dark:hover:border-neutral-600 hover:bg-neutral-50 dark:hover:bg-neutral-800 hover:shadow-sm transition-all duration-200 cursor-default select-none">
-    <span className="shrink-0 w-[18px] h-[18px] flex items-center justify-center">
+    <span className="shrink-0 w-4.5 h-4.5 flex items-center justify-center">
       {getTechIcon(name, "w-full h-full")}
     </span>
     <span className="text-[13px] font-medium text-neutral-700 dark:text-neutral-300 whitespace-nowrap leading-none">
