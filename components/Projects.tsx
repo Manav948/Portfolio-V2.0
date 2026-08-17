@@ -35,14 +35,20 @@ const PROJECTS_DATA = [
     status: "Running"
   },
   {
-    img: "/FeedBacklyv.20.png",
-    title: "FeedBackly",
-    description:
-      "Application that allows users to receive anonymous feedback using shareable links.",
-    tech: ["Next.js", "Tailwind", "MongoDB"],
-    link: "https://feedbackly.manavvalani.in/",
-    github: "https://github.com/Manav948/feedbackly",
-    status: "Running"
+    img: "/pixellink.png",
+    title: "PixelLink",
+    description: "PixelLink is a platform where user can come with long url and get Short Url and readirect easily on that link and get batter and fast response",
+    tech: [
+      "Next.js",
+      "Tailwind",
+      "Shadcn UI",
+      "Supabase",
+      "Prisma",
+      "React Query",
+    ],
+    link: "https://pixellink.manavvalani.in",
+    github: "https://github.com/Manav948/PixelLink",
+    status: "Running",
   },
   {
     img: "/imagino2.0.png",
@@ -59,15 +65,15 @@ const PROJECTS_DATA = [
 export const Projects: React.FC = () => {
   return (
     <div className="w-full flex flex-col gap-8">
-      
-      
+
+
       <div className="flex items-center justify-between">
         <h2 className="text-2xl font-bold tracking-tight text-neutral-900 dark:text-neutral-50">
           Projects
         </h2>
       </div>
 
-   
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
         {PROJECTS_DATA.map((project) => (
           <ProjectCard

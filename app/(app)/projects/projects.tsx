@@ -41,6 +41,21 @@ const ALL_PROJECTS = [
     link: "https://codeverse.manavvalani.in/",
     github: "https://github.com/Manav948/CodeVerse",
     status: "Running",
+  },{
+    img: "/pixellink.png",
+    title: "PixelLink",
+    description:"PixelLink is a platform where user can come with long url and get Short Url and readirect easily on that link and get batter and fast response",
+    tech: [
+      "Next.js",
+      "Tailwind",
+      "Shadcn UI",
+      "Supabase",
+      "Prisma",
+      "React Query",
+    ],
+    link: "https://pixellink.manavvalani.in",
+    github: "https://github.com/Manav948/PixelLink",
+    status: "Running",
   },
   {
     img: "/devpulse.png",
