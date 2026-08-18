@@ -83,6 +83,16 @@ const ALL_PROJECTS = [
     github: "https://github.com/Manav948/imagino",
     status: "Running",
   },
+   {
+    img: "/crm.png",
+    title: "CRM + ERP",
+    description:
+      "CRM + ERP is a unified full-stack Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) platform. It streamlines customer lifecycle management, inventory cataloging, stock audit logging, and automated sales delivery order processing.",
+    tech: ["React", "Tailwind", "Framer Motion", "MongoDB", "Express", "Node"],
+    link: "https://crm-erp-sigma.vercel.app",
+    github: "https://github.com/Manav948/CRM-ERP",
+    status: "Running",
+  },
   {
     img: "/FeedBacklyv.20.png",
     title: "FeedBackly",
