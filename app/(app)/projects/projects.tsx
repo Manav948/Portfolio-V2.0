@@ -73,6 +73,16 @@ const ALL_PROJECTS = [
     github: "https://github.com/Manav948/devpulse",
     status: "Running",
   },
+  { img: "/socket-chat.png",
+    title: "Socket-chat",
+    description:
+      "A Real-Time Multi-Client TCP Chat Application in C using socket.",
+    tech: [
+      "C",
+    ],
+    link: "https://github.com/Manav948/socket-chat",
+    github: "https://github.com/Manav948/socket-chat",
+  },
   {
     img: "/imagino2.0.png",
     title: "Imagino",
