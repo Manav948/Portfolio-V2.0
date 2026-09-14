@@ -115,9 +115,9 @@ const ALL_PROJECTS = [
   },
   {
     img: "/assitant3.png",
-    title: "AI-Assistant",
+    title: "Astra-Ai",
     description:
-      "A full-stack AI-powered voice assistant built with React, Node.js, Express, and MongoDB. Features real-time speech recognition, wake word detection, and natural language responses using the Google Gemini API.",
+      "Astra-ai is A Full-Stack AI-powered voice assistant built with React, Node.js, Express, and MongoDB. Features real-time speech recognition, wake word detection, and natural language responses using the Google Gemini API.",
     tech: ["React", "Tailwind", "Framer Motion", "MongoDB", "Express", "Node"],
     link: "https://ai-assistant-neon-one.vercel.app/",
     github: "https://github.com/Manav948/ai-assistant",
