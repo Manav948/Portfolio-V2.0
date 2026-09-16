@@ -118,9 +118,19 @@ const ALL_PROJECTS = [
     title: "Astra-Ai",
     description:
       "Astra-ai is A Full-Stack AI-powered voice assistant built with React, Node.js, Express, and MongoDB. Features real-time speech recognition, wake word detection, and natural language responses using the Google Gemini API.",
-    tech: ["React", "Tailwind", "Framer Motion", "MongoDB", "Express", "Node"],
+    tech: ["React", "Tailwind", "Framer Motion", "MongoDB",],
     link: "https://ai-assistant-neon-one.vercel.app/",
     github: "https://github.com/Manav948/ai-assistant",
+    status: "Running",
+  },
+    {
+    img: "/erp.png",
+    title: "Enterprise Resource Planning",
+    description:
+      "Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) platform. It streamlines customer lifecycle management, inventory cataloging, stock audit logging, and automated sales delivery order processing.",
+    tech: ["Next.js", "Tailwind", "Framer Motion", "MongoDB", "Express", "Node"],
+    link: "https://crm-erp-sigma.vercel.app/",
+    github: "https://github.com/Manav948/CRM-ERP",
     status: "Running",
   },
   {
