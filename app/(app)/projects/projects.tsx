@@ -127,7 +127,7 @@ const ALL_PROJECTS = [
     img: "/erp.png",
     title: "Enterprise Resource Planning",
     description:
-      "Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) platform. It streamlines customer lifecycle management, inventory cataloging, stock audit logging, and automated sales delivery order processing.",
+      "EnterPrise respourse planning (ERP) + crp is a unified full-stack Enterprise Resource Planning (ERP) and Customer Relationship Management (CRM) platform. It streamlines customer lifecycle management, inventory cataloging, stock audit logging, and automated sales delivery order processing.",
     tech: ["Next.js", "Tailwind", "Framer Motion", "MongoDB", "Express", "Node"],
     link: "https://crm-erp-sigma.vercel.app/",
     github: "https://github.com/Manav948/CRM-ERP",
