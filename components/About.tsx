@@ -57,7 +57,7 @@ const About = () => {
 
 
           <div className="flex items-center gap-3 flex-wrap">
-            <BookCall href="https://calendly.com/manav-valani" />
+            <BookCall href="https://calendly.com/valanimanav61/meet" />
             <Button
               href="/projects"
             >
